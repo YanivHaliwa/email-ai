@@ -13,6 +13,8 @@ This script allows users to read from and send emails via the command line, offe
 - **Send Emails**: Provides a command-line interface to send emails, allowing users to input the recipient, subject, and body.
 - **Argument Parsing**: Uses argparse to handle input options, making it easy to integrate into other scripts or workflows.
 
+for more scripts using GPT for translation and subtitle check here: [Subtitle Management Tools section in the main README](https://github.com/YanivHaliwa/Linux-Stuff/tree/master?tab=readme-ov-file#subtitle-management-tools).
+
 #### Usage:
 - **Read Emails**: Use the `-r` flag to read emails. You can specify the number of emails to read as an argument.
 - **Send Emails**: Use the `-s` flag followed by the recipient's email address to send an email. The script will prompt for the subject and message body.
@@ -46,7 +48,6 @@ This script automates sending emails using Gmail through a scheduled task (like 
 # Run every day at 9 AM
 0 9 * * * /usr/bin/python3 /path/to/autogmail.py
 ```
-
 
 # Google API Authentication Setup
 
