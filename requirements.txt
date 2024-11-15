@@ -1,0 +1,7 @@
+argparse
+colorama
+google
+hyperlink
+openai
+pydbus
+requests
