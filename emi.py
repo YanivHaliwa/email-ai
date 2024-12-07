@@ -22,6 +22,7 @@ from requests.adapters import HTTPAdapter
 import ssl
 import time
 from colorama import Fore, Style
+import subprocess
 
 warnings.filterwarnings("ignore")
 
@@ -51,23 +52,20 @@ def create_message(sender, to, subject, message_text):
     message['subject'] = subject
     return {'raw': base64.urlsafe_b64encode(message.as_string().encode()).decode()}
 
+
+def send_notification(title, message):
+    try:
+        subprocess.run(['notify-send', title, message])
+    except Exception as e:
+        print(f"Failed to send notification: {e}")
+
+
 # Function to send an email message
 def send_message(service, user_id, message):
     try:
         message = (service.users().messages().send(userId=user_id, body=message).execute())
         print(f"{datetime.now()} - sent")    
-        bus = SessionBus()
-        notifications = bus.get("org.freedesktop.Notifications")
-        notifications.Notify(
-            "My-Gmail",
-            0,
-            "",
-            "My-Gmail",
-            "Email sent",
-            [],
-            {},
-            -1,
-        )     
+        send_notification("My-Gmail", "Email sent successfully !")
         return message
     except Exception as e:
         print(f"An error occurred: {e}")
